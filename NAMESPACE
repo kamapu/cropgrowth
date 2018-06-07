@@ -1,4 +1,6 @@
 ## Import of functions
+importFrom(methods, new, slot)
+importFrom(graphics, plot)
 
 ## Import of packages
 
@@ -9,7 +11,8 @@ exportClasses(
 
 ## Export of methods
 exportMethods(
-	pile
+	pile,
+	plot
 )
 
 ## Export of regular function names

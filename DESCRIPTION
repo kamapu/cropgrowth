@@ -7,6 +7,9 @@ Author: Miguel Alvarez <kamapu78@gmail.com>
 Maintainer: Miguel Alvarez <kamapu78@gmail.com>
 Depends:
 	R(>= 3.0.0)
+Imports:
+	graphics,
+	methods
 Suggests:
 	devtools
 LazyData: true
@@ -19,3 +22,4 @@ Collate:
 	'start_message.R'
 	'piled_curves-class.R'
 	'pile.R'
+	'plot.piled_curves.R'
