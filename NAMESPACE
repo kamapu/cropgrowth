@@ -1,0 +1,12 @@
+## Import of functions
+
+## Import of packages
+
+## Export of classes
+exportClasses(
+	piled_curves
+)
+
+## Export of methods
+
+## Export of regular function names
