@@ -1,6 +1,6 @@
 ## Import of functions
 importFrom(methods, new, slot)
-importFrom(graphics, plot)
+importFrom(graphics, plot, lines, polygon)
 
 ## Import of packages
 
