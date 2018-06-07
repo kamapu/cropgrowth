@@ -8,5 +8,8 @@ exportClasses(
 )
 
 ## Export of methods
+exportMethods(
+	pile
+)
 
 ## Export of regular function names

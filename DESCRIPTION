@@ -7,6 +7,8 @@ Author: Miguel Alvarez <kamapu78@gmail.com>
 Maintainer: Miguel Alvarez <kamapu78@gmail.com>
 Depends:
 	R(>= 3.0.0)
+Suggests:
+	devtools
 LazyData: true
 Description: Collection of functions and objects usefull for the work with
 	growth modelling, especially with crop growth modelling.
@@ -14,5 +16,6 @@ License: GPL (>= 2)
 URL: https://github.com/kamapu/cropgrowth
 BugReports: https://github.com/kamapu/cropgrowth/issues
 Collate:
-	'piled_curves-class.R'
 	'start_message.R'
+	'piled_curves-class.R'
+	'pile.R'
