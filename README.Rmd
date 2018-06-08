@@ -1,4 +1,21 @@
+---
+output: rmarkdown::github_document
+---
+
+<!-- README.md is generated from README.Rmd. Edit here! -->
+
+```{r,echo=FALSE}
+knitr::opts_chunk$set(
+  collapse=TRUE,
+  comment="#>",
+  fig.path="README-"
+)
+```
+
+
 # cropgrowth
+
+[![Travis Build Status](https://travis-ci.org/kamapu/cropgrowth.svg?branch=master)](https://travis-ci.org/kamapu/cropgrowth)
 
 Welcome back to growth modelling!!!
 

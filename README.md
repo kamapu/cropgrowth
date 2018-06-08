@@ -1,4 +1,15 @@
+---
+output: rmarkdown::github_document
+---
+
+<!-- README.md is generated from README.Rmd. Edit here! -->
+
+
+
+
 # cropgrowth
+
+[![Travis Build Status](https://travis-ci.org/kamapu/cropgrowth.svg?branch=master)](https://travis-ci.org/kamapu/cropgrowth)
 
 Welcome back to growth modelling!!!
 
