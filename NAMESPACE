@@ -16,3 +16,6 @@ exportMethods(
 )
 
 ## Export of regular function names
+export(
+	read_apsim
+)

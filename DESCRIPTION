@@ -23,3 +23,4 @@ Collate:
 	'piled_curves-class.R'
 	'pile.R'
 	'plot.piled_curves.R'
+	'read_apsim.R'
