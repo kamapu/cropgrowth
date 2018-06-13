@@ -3,7 +3,7 @@
 # Author: Miguel Alvarez
 ################################################################################
 
-read_apsim <- function(file, path=".", pattern="out") {
+read_apsim <- function(file, path=".", pattern="out", empty_cols=0) {
 	if(missing(file))
 		file <- list.files(path=path, pattern=pattern)
 	Out <- list()
@@ -28,7 +28,7 @@ read_apsim <- function(file, path=".", pattern="out") {
 	complete_columns <- function(x, columns) {
 		for(i in columns)
 			if(!i %in% colnames(x))
-				x[,i] <- NA
+				x[,i] <- empty_cols
 		return(x)
 	}
 	if(length(Out) > 1) {
