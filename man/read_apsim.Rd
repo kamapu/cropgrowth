@@ -19,14 +19,26 @@ read_apsim(file, path=".", pattern="out", empty_cols=0)
 }
 \details{
 If \code{'file'} is missing, the folder indicated in \code{'path'} will be
-scanned and all contained files will be loaded.
+scanned by \code{\link{list.files}} and all contained files will be loaded.
 If some tables contains less columns, missing columns will be created and filled
 with the value indicated in \code{'empty_cols'} (usually \code{'0'} or
 \code{'NA'}).
+The entry indicated as title (usually the name of the file without extension) is
+inserted as column \code{'index'} for the respective simulations.
 }
 \value{
-A data frame.
+A data frame with daily records as rows and all variables as columns.
+}
+\source{
+Visit the site of the \bold{APSIM} Initiative (\url{http://www.apsim.info}).
+}
+\author{
+Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
 \examples{
-## Examples will follow
+library(cropgrowth)
+
+## APSIM example installed in package
+rice <- read_apsim(path=path.package("cropgrowth"))
+head(rice)
 }

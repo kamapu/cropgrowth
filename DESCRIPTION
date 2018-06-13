@@ -11,6 +11,7 @@ Imports:
 	graphics,
 	methods
 Suggests:
+	APSIM,
 	devtools
 LazyData: true
 Description: Collection of functions and objects usefull for the work with

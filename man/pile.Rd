@@ -34,9 +34,12 @@ Miguel Alvarez (\email{kamapu78@gmail.com}).
 }
 \examples{
 library(cropgrowth)
+
+## Subset to one treatment
 maize_model <- subset(maize_model, treatment == "T3")
 
-maize_growth <- pile(maize_model[,c("wrt","wst","wglv","wgld","yield")],
-	maize_model$current_date)
+maize_growth <- pile(
+	x=maize_model[,c("wst","wglv","wgld","yield")],
+	time=maize_model[,c("current_date","development_stage","tsum")])
 }
 \keyword{methods}
