@@ -33,7 +33,7 @@ A data frame with daily records as rows and all variables as columns.
 Visit the site of the \bold{APSIM} Initiative (\url{http://www.apsim.info}).
 }
 \author{
-Miguel Alvarez (\email{kamapu78@gmail.com}).
+Miguel Alvarez, \email{kamapu78@gmail.com}.
 }
 \examples{
 library(cropgrowth)

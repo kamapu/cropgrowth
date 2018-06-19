@@ -48,21 +48,21 @@ library(cropgrowth)
 maize_model <- subset(maize_model, treatment == "T3")
 
 ## Create a piled_curves object
-maize_growth <- pile(maize_model[,c("wst","wglv","wgld","yield")],
-	maize_model$current_date)
+maize_growth <- pile(x=maize_model, time=c("current_date","development_stage","tsum"),
+	biomass=c("wst","wglv","wgld","yield"))
 
 ## Plot all single curves
 par(mar=c(4,5,1,1))
-plot("time", maize_growth, method="input", col=c("brown","darkgreen","darkgrey",
+plot("current_date", maize_growth, method="input", col=c("brown","darkgreen","darkgrey",
 	"red"), lwd=3, xlab="Time", ylab=expression("Biomass in g m"^-2))
 
 ## Plot piled curves (top is total aerial biomass)
-plot("time", maize_growth, method="piled", col=c("brown","darkgreen","darkgrey",
+plot("current_date", maize_growth, method="piled", col=c("brown","darkgreen","darkgrey",
 	"red"), fill=c("yellow","lightgreen","lightgrey","orange"),
 	lwd=3, xlab="Time", ylab=expression("Biomass in g m"^-2))
 
 ## Plot partition curves (top is total aerial biomass as unit)
-plot("time", maize_growth, method="relative", col=c("brown","darkgreen",
+plot("current_date", maize_growth, method="relative", col=c("brown","darkgreen",
 	"darkgrey", NA), fill=c("yellow","lightgreen","lightgrey","orange"),
 	lwd=3, xlab="Time", ylab="Biomass proportion")
 }

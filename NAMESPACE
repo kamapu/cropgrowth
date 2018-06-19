@@ -1,8 +1,7 @@
 ## Import of functions
 importFrom(methods, new, slot)
 importFrom(graphics, plot, lines, polygon)
-
-## Import of packages
+importFrom(stats, terms)
 
 ## Export of classes
 exportClasses(
@@ -17,5 +16,6 @@ exportMethods(
 
 ## Export of regular function names
 export(
-	read_apsim
+	read_apsim,
+	read_sunscan
 )

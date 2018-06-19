@@ -26,7 +26,7 @@ The slot \code{'time'} can contain different formats or variables used as time
 (e.g. date, day of the year, etc.).
 }
 \author{
-Miguel Alvarez (\email{kamapu78@gmail.com}).
+Miguel Alvarez, \email{kamapu78@gmail.com}.
 }
 \examples{
 showClass("piled_curves")
