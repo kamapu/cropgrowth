@@ -1,7 +1,7 @@
 ## Import of functions
 importFrom(methods, new, slot)
 importFrom(graphics, plot, lines, polygon)
-importFrom(stats, terms)
+importFrom(stats, terms, sd, aggregate)
 
 ## Export of classes
 exportClasses(
