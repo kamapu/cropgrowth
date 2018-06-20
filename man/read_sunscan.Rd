@@ -45,5 +45,5 @@ sunscan_v1 <- read_sunscan("sunscan_v1.txt")
 sunscan_v1 <- read_sunscan("sunscan_v1.txt", collapse=TRUE)
 
 ## Second example (note different structure of the scripts)
-data_v2 <- read_sunscan("sunscan_v2.txt", version=2, collapse=TRUE)
+sunscan_v2 <- read_sunscan("sunscan_v2.txt", version=2, collapse=TRUE)
 }

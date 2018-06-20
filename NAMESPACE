@@ -17,5 +17,6 @@ exportMethods(
 ## Export of regular function names
 export(
 	read_apsim,
-	read_sunscan
+	read_sunscan,
+	summary_stats
 )
