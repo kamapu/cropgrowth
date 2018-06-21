@@ -2,7 +2,7 @@ Package: cropgrowth
 Version: 0.1.0.9001
 Encoding: UTF-8
 Date: 2018-06-07
-Title: Displaying Results from Crop Growth Modelling
+Title: Assessing Results from Crop Growth Modelling
 Author: Miguel Alvarez <kamapu78@gmail.com>
 Maintainer: Miguel Alvarez <kamapu78@gmail.com>
 Depends:

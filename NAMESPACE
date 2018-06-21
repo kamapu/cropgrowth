@@ -11,12 +11,12 @@ exportClasses(
 ## Export of methods
 exportMethods(
 	pile,
-	plot
+	plot,
+	summary_stats
 )
 
 ## Export of regular function names
 export(
 	read_apsim,
-	read_sunscan,
-	summary_stats
+	read_sunscan
 )
