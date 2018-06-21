@@ -17,11 +17,11 @@ read_apsim <- function(file, path=".", pattern="out", empty_cols=0) {
 						apsim[(which(title_pos) + 3):length(apsim)]),
 				stringsAsFactors=FALSE)
 		colnames(data_frame) <- col_names
-		colnames(data_frame)[1] <- "index"
-		data_frame$index <- title_name
+		colnames(data_frame)[1] <- "title"
+		data_frame$title <- title_name
 		data_frame$Date <- as.Date(data_frame$Date, "%d/%m/%Y")
 		for(j in colnames(data_frame)[!colnames(data_frame) %in%
-						c("index","Date")])
+						c("title","Date")])
 			data_frame[,j] <- as.numeric(data_frame[,j])
 		Out[[i]] <- data_frame
 	}
