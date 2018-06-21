@@ -27,8 +27,7 @@ setMethod("summary_stats", signature(x="formula"),
 setMethod("summary_stats", signature(x="character"),
 		function(x, factors, trend=mean, spread=sd, data, trend_args=list(),
 				spread_args=list()) {
-			x <- as.formula(paste(variable, "~", paste(factors,
-									collapse=" + ")))
+			x <- as.formula(paste(x, "~", paste(factors, collapse=" + ")))
 			return(summary_stats(x, trend, spread, data, trend_args,
 							spread_args))
 		}
