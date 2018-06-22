@@ -38,12 +38,13 @@ Miguel Alvarez, \email{kamapu78@gmail.com}.
 \examples{
 library(cropgrowth)
 
-setwd(path.package("cropgrowth"))
-sunscan_v1 <- read_sunscan("sunscan_v1.txt")
+file_name <- file.path(path.package("cropgrowth"), "sunscan_v1.txt")
+sunscan_v1 <- read_sunscan(file_name)
 
 ## Using collapse=TRUE
-sunscan_v1 <- read_sunscan("sunscan_v1.txt", collapse=TRUE)
+sunscan_v1 <- read_sunscan(file_name, collapse=TRUE)
 
-## Second example (note different structure of the scripts)
-sunscan_v2 <- read_sunscan("sunscan_v2.txt", version=2, collapse=TRUE)
+## Second example (note different structure of the outputs)
+file_name <- file.path(path.package("cropgrowth"), "sunscan_v2.txt")
+sunscan_v2 <- read_sunscan(file_name, version=2, collapse=TRUE)
 }
