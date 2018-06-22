@@ -18,7 +18,7 @@ read_apsim <- function(file, path=".", pattern="out", empty_cols=0) {
 				stringsAsFactors=FALSE)
 		colnames(data_frame) <- col_names
 		colnames(data_frame)[1] <- "Title"
-		data_frame$title <- title_name
+		data_frame$Title <- title_name
 		data_frame$Date <- as.Date(data_frame$Date, "%d/%m/%Y")
 		for(j in colnames(data_frame)[!colnames(data_frame) %in%
 						c("Title","Date")])
