@@ -7,7 +7,7 @@ This function is optimized for reading multiple APSIM output files and storing
 the data in a single data frame.
 }
 \usage{
-read_apsim(file, path=".", pattern="out", empty_cols=0)
+read_apsim(file, path=".", pattern="out", na_strings, empty_cols=0)
 }
 \arguments{
 \item{file}{Character vector with the names to be read.}
@@ -15,6 +15,8 @@ read_apsim(file, path=".", pattern="out", empty_cols=0)
 	folder containing the files.}
 \item{pattern}{A character value indicating the extension of the files (passed
 	to \code{\link{list.files}}).}
+\item{na_strings}{Character vector with values that have to be converted into
+	NAs.}
 \item{empty_cols}{Value used to fill new columns, if required.}
 }
 \details{

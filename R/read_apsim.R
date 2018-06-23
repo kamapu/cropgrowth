@@ -3,7 +3,8 @@
 # Author: Miguel Alvarez
 ################################################################################
 
-read_apsim <- function(file, path=".", pattern="out", empty_cols=0) {
+read_apsim <- function(file, path=".", pattern="out", na_strings,
+		empty_cols=0) {
 	if(missing(file))
 		file <- list.files(path=path, pattern=pattern)
 	Out <- list()
@@ -21,8 +22,11 @@ read_apsim <- function(file, path=".", pattern="out", empty_cols=0) {
 		data_frame$Title <- title_name
 		data_frame$Date <- as.Date(data_frame$Date, "%d/%m/%Y")
 		for(j in colnames(data_frame)[!colnames(data_frame) %in%
-						c("Title","Date")])
+						c("Title","Date")]) {
+			if(!missing(na_strings))
+				data_frame[data_frame[,j] %in% na_strings, j] <- NA
 			data_frame[,j] <- as.numeric(data_frame[,j])
+		}
 		Out[[i]] <- data_frame
 	}
 	complete_columns <- function(x, columns) {
