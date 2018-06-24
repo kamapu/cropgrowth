@@ -3,7 +3,7 @@
 \alias{piled_curves}
 \alias{piled_curves-class}
 
-\title{Piled growth curves}
+\title{Piled Growth Curves}
 \description{
 Objects containing growth curves representing partitions inside growing units
 (organisms).

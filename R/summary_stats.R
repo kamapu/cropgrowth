@@ -13,21 +13,36 @@ setGeneric("summary_stats",
 setMethod("summary_stats", signature(x="formula"),
 		function(x, trend=mean, spread=sd, data, trend_args=list(),
 				spread_args=list()) {
-			var_trend <- aggregate(x, data, function(x) do.call(trend,
-								c(list(x=x), trend_args)))
-			var_spread <- aggregate(x, data, function(x) do.call(spread,
-								c(list(x=x), spread_args)))
-			colnames(var_trend)[ncol(var_trend)] <- "tendency"
-			var_trend$dispersion <- var_spread[,ncol(var_trend)]
-			return(var_trend)
+			factors <- paste(x)[3]
+			variables <- strsplit(paste(x)[2], " + ", fixed=TRUE)[[1]]
+			summ <-  list()
+			for(i in variables) {
+				summ[[i]] <- list()
+				summ[[i]]$trend <- aggregate(as.formula(paste(i, "~", factors)),
+						data, function(x) do.call(trend, c(list(x=x),
+											trend_args)))
+				summ[[i]]$spread <- aggregate(as.formula(paste(i, "~", factors)),
+						data, function(x) do.call(spread, c(list(x=x),
+											spread_args)))
+				colnames(summ[[i]]$trend)[2] <- "tendency"
+				summ[[i]]$trend$dispersion <- summ[[i]]$spread[,2]
+				summ[[i]] <- data.frame(variable=i, summ[[i]]$trend,
+						stringsAsFactors=FALSE)
+			}
+			summ <- do.call(rbind, summ)
+			rownames(summ) <- NULL
+			return(summ)
 		}
 )
 
-# Method for class 'data.frame'
+# Method for class 'character'
 setMethod("summary_stats", signature(x="character"),
 		function(x, factors, trend=mean, spread=sd, data, trend_args=list(),
 				spread_args=list()) {
-			x <- as.formula(paste(x, "~", paste(factors, collapse=" + ")))
+			if(length(x) > 1) x <- paste(x, collapse= " + ")
+			if(length(factors) > 1) factors <- paste(factors, collapse= " + ")
+			
+			x <- as.formula(paste(x, "~", factors))
 			return(summary_stats(x, trend, spread, data, trend_args,
 							spread_args))
 		}

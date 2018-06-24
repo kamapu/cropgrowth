@@ -19,7 +19,7 @@ spread of values of a variable by one or more factors.
 	spread_args=list())
 }
 \arguments{
-\item{x}{Either a formula or a character vector.}
+\item{x}{Either a formula or a character vector with the name of variables.}
 \item{factors}{Character vector indicating categorical variables for grouping
 	the values.}
 \item{trend,spread}{The trend and spread functions.}
@@ -32,9 +32,13 @@ Calculation of tendency and distribution parameters for variables grouped by a
 combination of factors.
 This function is applying \code{\link[=aggregate]{aggregate()}} for grouping
 observations.
+
+In the method \code{'formula'}, the terms are expressed as
+\emph{variable ~ factors}.
 }
 \value{
-A data frame with three variables, namely factor, tendency and dispersion.
+A data frame with one column for the variables, each factor as a column and the
+values of tendency and dispersion.
 }
 \author{
 Miguel Alvarez, \email{kamapu78@gmail.com}.
@@ -47,5 +51,5 @@ library(cropgrowth)
 data(maize_model)
 
 ## The formula method
-summary_stats(lai ~ treatment, data=maize_model)
+summary_stats(wrt + wst + wglv + wgld + yield ~ treatment, data=maize_model)
 }

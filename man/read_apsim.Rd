@@ -1,7 +1,7 @@
 \name{read_apsim}
 \alias{read_apsim}
 
-\title{Read multiple APSIM output files}
+\title{Read Multiple APSIM Output Files}
 \description{
 This function is optimized for reading multiple APSIM output files and storing
 the data in a single data frame.

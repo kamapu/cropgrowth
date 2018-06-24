@@ -3,7 +3,7 @@
 \alias{plot}
 \alias{plot,character,piled_curves-method}
 
-\title{Plot growth curves}
+\title{Plot Growth Curves}
 \description{
 Ad-hoc function to plot growth curves contained in
 \code{\linkS4class{piled_curves}} objects.

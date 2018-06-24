@@ -4,7 +4,7 @@
 \alias{pile,data.frame-method}
 \alias{pile,formula-method}
 
-\title{Pile partitions of growth curves}
+\title{Pile Partitions of Growth Curves}
 \description{
 Generating objects of class \code{\linkS4class{piled_curves}}.
 }

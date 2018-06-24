@@ -10,6 +10,7 @@ exportClasses(
 
 ## Export of methods
 exportMethods(
+	add_obs,
 	pile,
 	plot,
 	summary_stats
