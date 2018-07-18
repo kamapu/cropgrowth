@@ -24,8 +24,9 @@ setMethod("summary_stats", signature(x="formula"),
 				summ[[i]]$spread <- aggregate(as.formula(paste(i, "~", factors)),
 						data, function(x) do.call(spread, c(list(x=x),
 											spread_args)))
-				colnames(summ[[i]]$trend)[2] <- "tendency"
-				summ[[i]]$trend$dispersion <- summ[[i]]$spread[,2]
+				colnames(summ[[i]]$trend)[ncol(summ[[i]]$trend)] <- "tendency"
+				summ[[i]]$trend$dispersion <- summ[[i]]$spread[,
+						ncol(summ[[i]]$spread)]
 				summ[[i]] <- data.frame(variable=i, summ[[i]]$trend,
 						stringsAsFactors=FALSE)
 			}
