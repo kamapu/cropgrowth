@@ -3,7 +3,7 @@
 # Author: Miguel Alvarez
 ################################################################################
 
-eval_model <- function(vars, match, group, pred, obs, FUN=list()) {
+eval_model <- function(vars, match, group, pred, obs, FUN=list(), na.rm=FALSE) {
 	# Matching groups
 	group_values <- intersect(unique(pred[,group]), unique(obs[,group]))
 	for(i in c("pred","obs")) {
@@ -11,7 +11,7 @@ eval_model <- function(vars, match, group, pred, obs, FUN=list()) {
 		assign(i, split(get(i), get(i)[, group]))
 	}
 	# Assignment of matches
-	for(i in group_values) {
+	for(i in paste(group_values)) {
 		match_values <- unique(obs[[i]][,match])
 		select_matches <- sapply(as.list(match_values), function(x, y) {
 					which.min(abs(y - x))
@@ -23,13 +23,17 @@ eval_model <- function(vars, match, group, pred, obs, FUN=list()) {
 	vars_diff <- list()
 	for(i in vars) {
 		vars_diff[[i]] <- list()
-		for(j in group_values) {
+		for(j in paste(group_values)) {
 			obs_df=obs[[j]][,c(match,i)]
 			pred_df=pred[[j]][,c(match,i)]
 			colnames(obs_df)[2] <- "observed"
 			colnames(pred_df)[2] <- "predicted"
 			vars_diff[[i]][[j]] <- merge(obs_df, pred_df, sort=FALSE)
 			vars_diff[[i]][[j]]$group <- j
+			if(na.rm)
+				vars_diff[[i]][[j]] <- vars_diff[[i]][[j]][
+						!is.na(vars_diff[[i]][[j]]$observed) &
+								!is.na(vars_diff[[i]][[j]]$predicted),]
 		}
 		## vars_diff[[i]] <- do.call(rbind, vars_diff[[i]])
 	}
@@ -37,7 +41,7 @@ eval_model <- function(vars, match, group, pred, obs, FUN=list()) {
 	vars_fit <- list()
 	for(i in vars) {
 		vars_fit[[i]] <- list()
-		for(j in group_values) {
+		for(j in paste(group_values)) {
 			vars_fit[[i]][[j]] <- list()
 			for(k in names(FUN))
 				vars_fit[[i]][[j]][[k]] <- with(vars_diff[[i]][[j]],

@@ -10,7 +10,7 @@ Additionally, multiple observations (repetitions) may be compared with single
 simulations.
 }
 \usage{
-eval_model(vars, match, group, pred, obs, FUN=list())
+eval_model(vars, match, group, pred, obs, FUN=list(), na.rm=FALSE)
 }
 \arguments{
 \item{vars}{Character vector with the variables to be evaluated.}
@@ -19,6 +19,8 @@ eval_model(vars, match, group, pred, obs, FUN=list())
 \item{pred}{Data frame containing predicted variables.}
 \item{obs}{Data frame containing observed variables.}
 \item{FUN}{List with functions used for the evaluation.}
+\item{na.rm}{Logical value, whether NAs in predictions and observations have to
+	be skipped or not.}
 }
 \details{
 The function \code{eval_model()} matches predictions and observations according
