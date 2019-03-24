@@ -1,0 +1,3 @@
+- [ ] Function for assign predictions to observations
+- [ ] Review documentation
+- [x] Example for done task
