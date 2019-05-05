@@ -10,20 +10,23 @@ Additionally, multiple observations (repetitions) may be compared with single
 simulations.
 }
 \usage{
-eval_model(vars, match, group, pred, obs, FUN=list(), na.rm=FALSE)
+eval_model(pred, obs, vars, match, group, FUN=list(), na.rm=FALSE, ...)
 }
 \arguments{
-\item{vars}{Character vector with the variables to be evaluated.}
-\item{match}{Variable used to match samples in observed values.}
-\item{group}{Variable used to group samples.}
-\item{pred}{Data frame containing predicted variables.}
-\item{obs}{Data frame containing observed variables.}
+\item{pred,obs}{Data frames containing predicted and observed variables,
+	respectively.}
+\item{vars}{Character vector with the names of variables to be evaluated.}
+\item{match,group}{Character values or vectors indicating the names of variables
+	used to match observations with predictions and to group treatments (see
+	also \code{\link{match_observations}}).}
 \item{FUN}{List with functions used for the evaluation.}
 \item{na.rm}{Logical value, whether NAs in predictions and observations have to
 	be skipped or not.}
+\item{...}{Further arguments passed to \code{\link{approx}} (see also
+	\code{\link{match_observations}}).}
 }
 \details{
-The function \code{eval_model()} matches predictions and observations according
+This function matches predictions and observations according
 to the variable \code{'match'} within the samples belonging to the same group
 (i.e. treatment).
 

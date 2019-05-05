@@ -3,49 +3,30 @@
 # Author: Miguel Alvarez
 ################################################################################
 
-eval_model <- function(vars, match, group, pred, obs, FUN=list(), na.rm=FALSE) {
-	# Matching groups
-	group_values <- intersect(unique(pred[,group]), unique(obs[,group]))
-	for(i in c("pred","obs")) {
-		assign(i, get(i)[get(i)[,group] %in% group_values,])
-		assign(i, split(get(i), get(i)[, group]))
-	}
-	# Assignment of matches
-	for(i in paste(group_values)) {
-		match_values <- unique(obs[[i]][,match])
-		select_matches <- sapply(as.list(match_values), function(x, y) {
-					which.min(abs(y - x))
-				}, y=pred[[i]][,match])
-		pred[[i]] <- pred[[i]][select_matches,]
-		pred[[i]][,match] <- match_values
-	}
-	# Observations and predictions per variable per group
-	vars_diff <- list()
-	for(i in vars) {
-		vars_diff[[i]] <- list()
-		for(j in paste(group_values)) {
-			obs_df=obs[[j]][,c(match,i)]
-			pred_df=pred[[j]][,c(match,i)]
-			colnames(obs_df)[2] <- "observed"
-			colnames(pred_df)[2] <- "predicted"
-			vars_diff[[i]][[j]] <- merge(obs_df, pred_df, sort=FALSE)
-			vars_diff[[i]][[j]]$group <- j
-			if(na.rm)
-				vars_diff[[i]][[j]] <- vars_diff[[i]][[j]][
-						!is.na(vars_diff[[i]][[j]]$observed) &
-								!is.na(vars_diff[[i]][[j]]$predicted),]
-		}
-		## vars_diff[[i]] <- do.call(rbind, vars_diff[[i]])
-	}
+eval_model <- function(pred, obs, vars, match, group, FUN=list(), na.rm=FALSE,
+		...) {
+	obs <- match_observations(pred, obs, vars, match, group, suffix="_pred",
+			...)
 	# Calculation of parameters
+	obs <- split(obs, unique(obs[,group]))
 	vars_fit <- list()
-	for(i in vars) {
+	for(i in names(obs)) {
 		vars_fit[[i]] <- list()
-		for(j in paste(group_values)) {
+		for(j in vars) {
 			vars_fit[[i]][[j]] <- list()
-			for(k in names(FUN))
-				vars_fit[[i]][[j]][[k]] <- with(vars_diff[[i]][[j]],
-						do.call(k, list(x=predicted, y=observed)))
+			for(k in names(FUN)) {
+				# NA check only applied for observations
+				if(na.rm) {
+					vars_fit[[i]][[j]][[k]] <-
+							with(obs[[i]][!is.na(obs[[i]][,j]),],
+							do.call(k, list(x=get(paste0(j, "_pred")),
+													y=get(j))))
+				} else {
+					vars_fit[[i]][[j]][[k]] <- with(obs[[i]],
+							do.call(k, list(x=get(paste0(j, "_pred")),
+											y=get(j))))
+				}
+			}
 			vars_fit[[i]][[j]] <- data.frame(group=j, var=i, do.call(cbind,
 							vars_fit[[i]][[j]]), stringsAsFactors=FALSE)
 		}
