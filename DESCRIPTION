@@ -23,5 +23,5 @@ URL: https://github.com/kamapu/cropgrowth
 BugReports: https://github.com/kamapu/cropgrowth/issues
 Collate:
 	'start_message.R''read_apsim.R''read_sunscan.R''summary_stats.R'
-	'eval_model.R'
+	'eval_model.R''match_observations.R'
 	'piled_curves-class.R''pile.R''plot.piled_curves.R''add_obs.R'

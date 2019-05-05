@@ -19,6 +19,7 @@ exportMethods(
 ## Export of regular function names
 export(
 	eval_model,
+	match_observations,
 	read_apsim,
 	read_sunscan
 )

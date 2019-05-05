@@ -1,3 +1,4 @@
 - [ ] Function for assign predictions to observations
 - [ ] Review documentation
+- [ ] Function for LINTUL simulation
 - [x] Example for done task
