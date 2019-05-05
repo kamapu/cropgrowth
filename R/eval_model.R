@@ -27,7 +27,7 @@ eval_model <- function(pred, obs, vars, match, group, FUN=list(), na.rm=FALSE,
 											y=get(j))))
 				}
 			}
-			vars_fit[[i]][[j]] <- data.frame(group=j, var=i, do.call(cbind,
+			vars_fit[[i]][[j]] <- data.frame(group=i, var=j, do.call(cbind,
 							vars_fit[[i]][[j]]), stringsAsFactors=FALSE)
 		}
 		vars_fit[[i]] <- do.call(rbind, vars_fit[[i]])
