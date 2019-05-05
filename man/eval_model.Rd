@@ -52,5 +52,6 @@ models. \emph{Environmental Modelling and Software} 40: 1--20.
 }
 \examples{
 library(cropgrowth)
-## Make an example!
+
+## No example at the moment
 }

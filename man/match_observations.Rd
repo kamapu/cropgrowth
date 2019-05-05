@@ -59,5 +59,5 @@ Miguel Alvarez, \email{kamapu78@gmail.com}.
 \examples{
 library(cropgrowth)
 
-## Insert example
+## No example at the moment
 }

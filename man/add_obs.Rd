@@ -33,6 +33,8 @@ Points and error bars overlaid to active plot device.
 Miguel Alvarez, \email{kamapu78@gmail.com}.
 }
 \examples{
+library(cropgrowth)
+
 ## No example at the moment
 }
 \keyword{methods}
