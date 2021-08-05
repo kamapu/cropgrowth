@@ -1,12 +1,12 @@
 #' @title Pile Partitions of Growth Curves
 #' 
 #' @description 
-#' Generating objects of class \code{\linkS4class{piled_curves}}.
+#' Generating objects of class  [piled_curves-class].
 #' 
 #' In the case of crops, sorting of data frames should be done from left to
 #' right according to the bottom-up position of organs in the plants.
 #' 
-#' In the method \code{'formula'}, the terms at the left side are the sorted
+#' In the method `'formula'`, the terms at the left side are the sorted
 #' biomass variables, while at the right side are the time variables.
 #' 
 #' @name pile
@@ -18,7 +18,7 @@
 #' @param data A data frame including time and biomass variables.
 #' @param ... Further arguments passed among methods.
 #' 
-#' @return A S4 object of class \code{\linkS4class{piled_curves}}.
+#' @return A S4 object of class [piled_curves-class].
 #' 
 #' @examples
 #' ## Subset to one treatment
