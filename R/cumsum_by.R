@@ -42,6 +42,7 @@ cumsum_by <- function(x, ...) {
 
 #' @rdname cumsum_by
 #' @aliases cumsum_by.data.frame
+#' @export
 cumsum_by.data.frame <- function(x, ids, vars, by, suffix = "_cumul", ...) {
 	# sort table
 	x <- x[order(x[ , by]), ]
@@ -64,6 +65,7 @@ cumsum_by.data.frame <- function(x, ids, vars, by, suffix = "_cumul", ...) {
 
 #' @rdname cumsum_by
 #' @aliases cumsum_by.formula
+#' @export 
 cumsum_by.formula <- function(x, data, ...) {
 	vars <- strsplit(as.character(x)[2], "+", fixed=TRUE)[[1]]
 	vars <- gsub("\\s+", "", vars)

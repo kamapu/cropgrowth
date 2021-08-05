@@ -32,6 +32,10 @@ output data frame.}
 
 \item{data}{A data frame required in the formula method.}
 }
+\value{
+The input data frame with the cumulative sums as additional variables.
+Note that the sorting of rows may change in the process.
+}
 \description{
 Observations needing the calculation of a cumulative sum, for instance in
 germination experiments, will require to be done by treatment, combining
