@@ -1,8 +1,32 @@
-# TODO:   Definition of class added curves
-# 
-# Author: Miguel Alvarez
-################################################################################
-
+#' @title Piled Growth Curves
+#' 
+#' @description 
+#' Objects containing growth curves representing partitions inside growing
+#' units (organisms).
+#' 
+#' Objects can be created by \code{new("piled_curves")}, but usually they will
+#' result from the function \emph{pile}.
+#' 
+#' The slot \code{'time'} can contain different formats or variables used as
+#' time (e.g. date, day of the year, etc.).
+#' 
+#' @name piled_curves-class
+#' @aliases piled_curves
+#' 
+#' @section Slots:
+#' \describe{
+#'   \item{time}{A data frame including time variables as columns.}
+#'   \item{input}{A matrix including the state (e.g. biomass) of every partition
+#'     as columns.}
+#'   \item{piled}{The same state variables as in `'input'` but with accumulated
+#'     values}
+#'   \item{relative}{The relative partition of the state variable.}
+#' }
+#' 
+#' @examples
+#' showClass("piled_curves")
+#' 
+#' @exportClass piled_curves
 setClass("piled_curves",
 		# Definition of slots
 		slots=c(

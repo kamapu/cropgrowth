@@ -1,8 +1,8 @@
 ---
-output: rmarkdown::github_document
+output:
+  github_document:
+    html_preview: false
 ---
-
-<!-- README.md is generated from README.Rmd. Edit here! -->
 
 ```{r,echo=FALSE}
 knitr::opts_chunk$set(
@@ -12,18 +12,15 @@ knitr::opts_chunk$set(
 )
 ```
 
-
 # cropgrowth
-
-[![Travis Build Status](https://travis-ci.org/kamapu/cropgrowth.svg?branch=master)](https://travis-ci.org/kamapu/cropgrowth)
 
 Welcome back to growth modelling!!!
 
 This project is under construction
 
-To download and install the package in your **R** use `devtools`:
+To download and install the package in your **R** use `remotes`:
 
 ```{r eval=FALSE}
-library(devtools)
-install_github("kamapu/cropgrowth")
+library(remotes)
+install_github("kamapu/cropgrowth", dependencies = TRUE)
 ```
