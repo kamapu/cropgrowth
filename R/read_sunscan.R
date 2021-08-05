@@ -1,9 +1,11 @@
-# TODO:   Add comment
-# 
-# Author: Miguel Alvarez
-################################################################################
-
-# Reading version 1.x
+#' @title Read Sunscan v 1.x
+#' 
+#' @description
+#' Reading files of version 1.x
+#' 
+#' @name Sunscan_Raw_v1
+#' 
+#' @keywords internal
 Sunscan_Raw_v1 <- function(x) {
 	Head <- gsub("^ *|(?<= ) | *$", "", x, perl=TRUE)
 	Head <- strsplit(Head, " ", fixed=TRUE)
@@ -47,6 +49,14 @@ Sunscan_Raw_v1 <- function(x) {
 	return(Section)
 }
 
+#' @title Read LAI v 1.x
+#' 
+#' @description
+#' Reading files of version 1.x
+#'  
+#' @name Sunscan_LAI_v1
+#' 
+#' @keywords internal
 Sunscan_LAI_v1 <- function(x) {
 	Head <- gsub("^ *|(?<= ) | *$", "", x, perl=TRUE)
 	Head <- strsplit(Head, " ", fixed=TRUE)
@@ -95,7 +105,14 @@ Sunscan_LAI_v1 <- function(x) {
 	return(Section)
 }
 
-## Reading version 2.x
+#' @title Read LAI v 2.x
+#' 
+#' @description
+#' Reading files of version 2.x
+#'  
+#' @name Sunscan_Raw_v2
+#' 
+#' @keywords internal
 Sunscan_Raw_v2 <- function(x) {
 	Data <- strsplit(x, "\t", fixed=TRUE)
 	Head <- Data[1:10]
@@ -112,7 +129,41 @@ Sunscan_Raw_v2 <- function(x) {
 	return(Data)
 }
 
-## The hull function -----------------------------------------------------------
+#' @title Reading SunScan Output Files
+#' 
+#' @description 
+#' Importing SunScan readings from text files (output files) into the session.
+#' 
+#' Groups of readings are usually split in different tables within an output
+#' file, which are the elements of the output list if \code{'collapse=FALSE'}.
+#' At the moment only versions 1 and 2 are implemented in the function.
+#' 
+#' Data frames are separated in the lists "Raw" and "LAI" depending on the
+#' content of the tables. Raw data are measurements of PAR, while LAI includes
+#' estimations of the leaf area index.
+#' 
+#' @param file Character value with the name of the file, including extension.
+#' @param version Version of the output file as integer.
+#' @param collapse A logical value indicating whether the output may be
+#' collapsed to a data frame or kept as a list.
+#' 
+#' @return A list containing reading groups in separated data frames (`'Raw'`
+#'   and `'LAI'`).
+#' 
+#' @seealso [readLines()].
+#' 
+#' @examples
+#' file_name <- file.path(path.package("cropgrowth"), "sunscan_v1.txt")
+#' sunscan_v1 <- read_sunscan(file_name)
+#' 
+#' ## Using collapse=TRUE
+#' sunscan_v1 <- read_sunscan(file_name, collapse=TRUE)
+#' 
+#' ## Second example (note different structure of the outputs)
+#' file_name <- file.path(path.package("cropgrowth"), "sunscan_v2.txt")
+#' sunscan_v2 <- read_sunscan(file_name, version=2, collapse=TRUE)
+#' 
+#' @export 
 read_sunscan <- function(file, version=1, collapse=FALSE) {
 	x <- readLines(file, warn=FALSE)
 	index <- cumsum(grepl("Title", x))
@@ -140,4 +191,3 @@ read_sunscan <- function(file, version=1, collapse=FALSE) {
 	}
 	return(Out)
 }
-
