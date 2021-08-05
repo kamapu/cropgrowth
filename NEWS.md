@@ -1,3 +1,11 @@
+vegtable 0.1.2
+==============
+
+### New Features
+
+* Function `cumsum_by()` calculating the cumulative sums by treatment.
+
+
 vegtable 0.1.1
 ==============
 

@@ -1,5 +1,5 @@
 Package: cropgrowth
-Version: 0.1.1
+Version: 0.1.2
 Encoding: UTF-8
 Title: Assessing Results from Crop Growth Modelling
 Authors@R: c(
@@ -26,6 +26,7 @@ Roxygen: list(markdown = TRUE)
 Collate:
     'imports.R'
 	'maize_model-data.R'
+	'cumsum_by.R'
 	'read_apsim.R'
 	'read_sunscan.R'
 	'summary_stats.R'

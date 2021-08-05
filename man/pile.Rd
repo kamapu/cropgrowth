@@ -23,10 +23,10 @@ biomass variables in the input data frame.}
 \item{data}{A data frame including time and biomass variables.}
 }
 \value{
-A S4 object of class \code{\linkS4class{piled_curves}}.
+A S4 object of class \linkS4class{piled_curves}.
 }
 \description{
-Generating objects of class \code{\linkS4class{piled_curves}}.
+Generating objects of class  \linkS4class{piled_curves}.
 
 In the case of crops, sorting of data frames should be done from left to
 right according to the bottom-up position of organs in the plants.
