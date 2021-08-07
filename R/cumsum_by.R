@@ -51,7 +51,7 @@ cumsum_by.data.frame <- function(x, ids, vars, by, suffix = "_cumul", ...) {
 		stop(paste("The combination of 'ids' and 'by' is not unique in 'x'.",
 						"Did you forget an identifier?"))
 	# creates the IDs
-	IDs <- do.call(paste0, x[ , ids])
+	IDs <- do.call(paste0, x[ , ids, drop = FALSE])
 	# calculate cumsum by group
 	OUT <- list()
 	for(i in unique(IDs)) {
