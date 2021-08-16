@@ -26,6 +26,9 @@
 #' @param by A character value used as temporal variable.
 #' @param suffix A character value added to the name of the variable in the
 #'   output data frame.
+#' @param diff A logical value. If true, the lagged differences (function
+#'   [diff()]) instead of the cumulative sums (function [cumsum()]) will be
+#'   calculated.
 #' @param ... Further arguments passed among methods.
 #' 
 #' @return
@@ -43,7 +46,8 @@ cumsum_by <- function(x, ...) {
 #' @rdname cumsum_by
 #' @aliases cumsum_by.data.frame
 #' @export
-cumsum_by.data.frame <- function(x, ids, vars, by, suffix = "_cumul", ...) {
+cumsum_by.data.frame <- function(x, ids, vars, by, suffix = "_cumul",
+		diff = FALSE, ...) {
 	# sort table
 	x <- x[order(x[ , by]), ]
 	# check identities
@@ -57,7 +61,10 @@ cumsum_by.data.frame <- function(x, ids, vars, by, suffix = "_cumul", ...) {
 	for(i in unique(IDs)) {
 		OUT[[i]] <- x[IDs == i, ]
 		for(j in vars)
-			OUT[[i]][ , paste0(j, suffix)] <- cumsum(OUT[[i]][ , j])
+			if(diff)
+				OUT[[i]][ , paste0(j, suffix)] <-
+						c(0, diff(OUT[[i]][ , j])) else
+				OUT[[i]][ , paste0(j, suffix)] <- cumsum(OUT[[i]][ , j])
 	}
 	OUT <- do.call(rbind, OUT)
 	invisible(OUT)

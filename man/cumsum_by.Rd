@@ -8,7 +8,7 @@
 \usage{
 cumsum_by(x, ...)
 
-\method{cumsum_by}{data.frame}(x, ids, vars, by, suffix = "_cumul", ...)
+\method{cumsum_by}{data.frame}(x, ids, vars, by, suffix = "_cumul", diff = FALSE, ...)
 
 \method{cumsum_by}{formula}(x, data, ...)
 }
@@ -29,6 +29,10 @@ calculate the cumulative sum.}
 
 \item{suffix}{A character value added to the name of the variable in the
 output data frame.}
+
+\item{diff}{A logical value. If true, the lagged differences (function
+\code{\link[=diff]{diff()}}) instead of the cumulative sums (function \code{\link[=cumsum]{cumsum()}}) will be
+calculated.}
 
 \item{data}{A data frame required in the formula method.}
 }
