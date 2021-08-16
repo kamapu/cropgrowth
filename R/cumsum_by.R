@@ -46,8 +46,10 @@ cumsum_by <- function(x, ...) {
 #' @rdname cumsum_by
 #' @aliases cumsum_by.data.frame
 #' @export
-cumsum_by.data.frame <- function(x, ids, vars, by, suffix = "_cumul",
-		diff = FALSE, ...) {
+cumsum_by.data.frame <- function(x, ids, vars, by, suffix, diff = FALSE, ...) {
+	# set suffix if missing
+	if(missing(suffix))
+		if(diff) suffix <- "_diff" else suffix <- "_cumul"
 	# sort table
 	x <- x[order(x[ , by]), ]
 	# check identities
